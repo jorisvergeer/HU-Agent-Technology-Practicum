@@ -8,9 +8,9 @@ import java.util.List;
 import org.json.simple.JSONValue;
 
 public class FifteenStack {
-	private List<Integer> stacks = Arrays.asList(3, 5, 7);
+	private List<Long> stacks = Arrays.asList(3L, 5L, 7L);
 
-	public int look(int stack) {
+	public long look(int stack) {
 		try {
 			return stacks.get(stack);
 		} catch (IndexOutOfBoundsException e) {
@@ -26,8 +26,7 @@ public class FifteenStack {
 	}
 
 	public boolean gameOver() {
-		int total = stacks.get(0) + stacks.get(1) + stacks.get(2);
-		if (total <= 0) {
+		if (stacks.get(0) == 0 && stacks.get(1) == 0 && stacks.get(2) == 0) {
 			return true;
 		}
 		return false;
@@ -45,7 +44,7 @@ public class FifteenStack {
 
 	public static FifteenStack fromString(String string) {
 		FifteenStack res = new FifteenStack();
-		res.stacks = (List<Integer>) JSONValue.parse(string);
+		res.stacks = (List<Long>) JSONValue.parse(string);
 		return res;
 	}
 }
